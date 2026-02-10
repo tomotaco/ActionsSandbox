@@ -28,4 +28,13 @@ jobs:
           echo test, and deploy your project.
 
   invoke-child-workflow:
+    needs: build
     uses: ./.github/workflows/child_workflow.yml
+
+  invoke-concurrentjob:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: concurrentjob
+        run: echo ConcurrentJob!
+        
